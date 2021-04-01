@@ -42,8 +42,14 @@ public class CidadeRepositoryTest {
 	@Test
 	public void falhaBuscaPelaCidade() {
 		String nomeCidade = "erro";
-		Cidades cidades = cidadeRepository.findByNome(nomeCidade);
-		Assert.assertNull(cidades);
+		Cidades cidade = new Cidades();
+		cidade.setNome("Maravilha");
+		cidade.setEstado("SC");
+		em.persist(cidade);
+		
+		Cidades cidades = cidadeRepository.findByNome("Maravilha");
+		Assert.assertNotNull(cidades);
+		Assert.assertNotEquals(nomeCidade, cidades.getNome());
 	}
 	
 }

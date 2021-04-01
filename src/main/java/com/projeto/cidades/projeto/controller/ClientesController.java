@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,6 +31,7 @@ import com.projeto.cidades.projeto.repository.ClientesRepository;
 
 @RestController
 @RequestMapping("/clientes")
+@Profile(value = {"dev", "test"})
 public class ClientesController {
 
 	@Autowired

@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,6 +27,7 @@ import com.projeto.cidades.projeto.repository.CidadeRepository;
 
 @RestController
 @RequestMapping("/cidades")
+@Profile(value = {"dev", "test"})
 public class CidadesController {
 
 	@Autowired

@@ -18,16 +18,37 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 @SpringBootTest
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
-public class CidadesControllerTest {
+class CidadesControllerTest {
 
 	@Autowired
-    private MockMvc mockMvc;
+	private MockMvc mockMvc;
+
+	@Test
+	void testaCriacaoCidadeERetorna201() throws Exception {
+		
+		URI uri = new URI("/cidades/cadastrar");
+		String json = "{\"nome\":\"Maravilha\",\"estado\":\"sc\"}";			
+		PostERetorna201(uri, json);
+		
+	}
 	
 	@Test
-	public void TestaCriacaoCidade() throws Exception {
-		URI uri = new URI("/cidades/cadastrar");
-		String json = "{\"nome\":\"teste\",\"estado\":\"TS\"}";
+	void testaBuscaCidadePeloNomeERetorna200() throws Exception {
 		
+		URI uri = new URI("/cidades/nome/Maravilha");
+		String json = "{\"nome\":\"Maravilha\",\"estado\":\"sc\"}";	
+		GetERetorna200(uri, json);
+	}
+	
+	@Test
+	void testaBuscaCidadePeloEstadoERetorna200() throws Exception {
+		
+		URI uri = new URI("/cidades/estado/sc");
+		String json = "{\"nome\":\"Maravilha\",\"estado\":\"sc\"}";	
+		GetERetorna200(uri, json);
+	}
+	
+	public void PostERetorna201(URI uri, String json) throws Exception {
 		mockMvc
 		.perform(MockMvcRequestBuilders
 				.post(uri)
@@ -36,6 +57,16 @@ public class CidadesControllerTest {
 		.andExpect(MockMvcResultMatchers
 				.status()
 				.is(201));
-	}	
-
+	}
+	
+	public void GetERetorna200(URI uri, String json) throws Exception {
+		mockMvc
+		.perform(MockMvcRequestBuilders
+				.get(uri)
+				.content(json)
+				.contentType(MediaType.APPLICATION_JSON))
+		.andExpect(MockMvcResultMatchers
+				.status()
+				.is(200));
+	}
 }
