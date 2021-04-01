@@ -3,6 +3,7 @@ package com.projeto.cidades.projeto.modelo;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,6 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 public class Cliente {
@@ -19,7 +23,9 @@ public class Cliente {
 	private Long id; 
 	private String nome;
 	private String sexo;
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@Column(name = "start_date")
+	@DateTimeFormat(pattern = "dd/MM/yyyy", iso = ISO.DATE)
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	private LocalDate dataNascimento;
 	private Long idade;
 	@OneToOne

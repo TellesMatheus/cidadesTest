@@ -3,8 +3,12 @@ package com.projeto.cidades.projeto.controller.form;
 
 import java.time.LocalDate;
 
-import org.springframework.format.annotation.DateTimeFormat;
+import javax.persistence.Column;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.projeto.cidades.projeto.modelo.Cidades;
 import com.projeto.cidades.projeto.modelo.Cliente;
 import com.projeto.cidades.projeto.repository.CidadeRepository;
@@ -13,8 +17,12 @@ public class ClienteForm {
 
 	private String nome;
 	private String sexo;
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	
+	@Column(name = "start_date")
+	@DateTimeFormat(pattern = "dd/MM/yyyy", iso = ISO.DATE)
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	private LocalDate dataNascimento;
+
 	private Long idade;
 	private String cidade;
 

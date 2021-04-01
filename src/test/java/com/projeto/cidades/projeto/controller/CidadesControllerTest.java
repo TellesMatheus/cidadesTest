@@ -18,13 +18,13 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 @SpringBootTest
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
-class CidadesControllerTest {
+public class CidadesControllerTest {
 
 	@Autowired
     private MockMvc mockMvc;
 	
 	@Test
-	void TestaCriacaoCidade() throws Exception {
+	public void TestaCriacaoCidade() throws Exception {
 		URI uri = new URI("/cidades/cadastrar");
 		String json = "{\"nome\":\"teste\",\"estado\":\"TS\"}";
 		
@@ -37,6 +37,5 @@ class CidadesControllerTest {
 				.status()
 				.is(201));
 	}	
-
 
 }

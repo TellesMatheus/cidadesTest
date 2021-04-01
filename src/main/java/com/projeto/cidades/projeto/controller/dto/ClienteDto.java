@@ -5,8 +5,12 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.springframework.format.annotation.DateTimeFormat;
+import javax.persistence.Column;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.projeto.cidades.projeto.modelo.Cidades;
 import com.projeto.cidades.projeto.modelo.Cliente;
 
@@ -15,7 +19,9 @@ public class ClienteDto {
 	private Long id;
 	private String nome;
 	private String sexo;
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@Column(name = "start_date")
+	@DateTimeFormat(pattern = "dd/MM/yyyy", iso = ISO.DATE)
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	private LocalDate dataNascimento;
 	private Long idade;
 	private Cidades cidades;

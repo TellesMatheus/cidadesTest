@@ -35,7 +35,7 @@ public class ClientesRepositoryTest {
 		Cliente Matheus = new Cliente();
 		Matheus.setNome(nomeCliente);
 		Matheus.setSexo("Masculino");
-		Matheus.setDataNascimento("21/08/2001");
+		Matheus.setDataNascimento(null);
 		Matheus.setIdade((long) 19);
 		Matheus.setCidade(cidadeRepository.findByNome("Maravilha"));
 		em.persist(Matheus);
