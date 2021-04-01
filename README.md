@@ -6,8 +6,8 @@
 ### Tabela de Conteúdos
 
 * [Status](#Status)
-* [Pre requisitos](#Pre requisitos)
-* [Como rodar a aplicação/testes](#Como rodar a aplicação/testes)
+* [Requisitos](#Requisitos)
+* [Utilização](#Utilização)
 * [Features](#Features)
 * [Roadmap](#Roadmap)
 * [Tecnologias](#Tecnologias)
@@ -18,14 +18,14 @@
 
 * Completo
 
-### Pre requisitos
+### Requisitos
 
 * Eclipse
 * Java 
 
-### Como rodar a aplicação/testes
+### Utilização
 
-* Para rodar o projeto, no eclipse basta dar: "run as CidadesProjetoApplication" e para realizar os testes é: "run ass JUnit Test". Para rodar o projeto com o docker use: "docker run -p 8080:8080 cidades/projeto", na prompt de comando.
+* Para rodar o projeto, no eclipse basta dar: "run as CidadesProjetoApplication" e para realizar os testes é: "run ass JUnit Test". Para rodar o projeto com o docker use: "docker run -p 8080:8080 cidades/projeto" na prompt de comando.
 
 ### Features
 
